@@ -19,6 +19,9 @@ public class RubyController : MonoBehaviour
     float horizontal;
     float vertical;
 
+    private bool isRightPressed = false;
+    private bool isLeftPressed = false;
+
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
 
@@ -38,6 +41,10 @@ public class RubyController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        isRightPressed = Input.GetKey(KeyCode.RightArrow);
+        isLeftPressed = Input.GetKey(KeyCode.LeftArrow);
+
 
         Vector2 move = new Vector2(horizontal, vertical);
 
@@ -62,6 +69,7 @@ public class RubyController : MonoBehaviour
         {
             Launch();
         }
+
 
     }
 
