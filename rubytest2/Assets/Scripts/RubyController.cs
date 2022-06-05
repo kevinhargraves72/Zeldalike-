@@ -86,18 +86,25 @@ public class RubyController : MonoBehaviour
     {
         if (amount < 0)
         {
-            animator.SetTrigger("Hit");
+            
+            
             if (isInvincible)
                 return;
-
+            animator.SetTrigger("Hit");
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            //Invoke("ResetTrigger", 2);
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 
+/*
+    void ResetTrigger(){
+        animator.ResetTrigger("Hit");
+    }
+*/
     void Launch()
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
