@@ -24,9 +24,15 @@ EditorBuildSettings:
     path: Assets/Level3.unity
     guid: ac9c8dfe3b41d714eb806eec5a296b8a
   - enabled: 1
+    path: Assets/BossLevel.unity
+    guid: 11daffbe9b2081d4aa1385876d8798ef
+  - enabled: 1
     path: Assets/FinalLevel.unity
     guid: 4cfe11e6eebc324429df6f61b6a8f000
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 35dc8a38152c0d341a3569dcb16178d8
+  - enabled: 1
+    path: Assets/Scenes/GameWon.unity
+    guid: d663ef83304705246a95329074a13e8c
   m_configObjects: {}

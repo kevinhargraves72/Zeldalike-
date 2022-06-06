@@ -35,6 +35,11 @@ public class Projectile : MonoBehaviour
             e.Fix();
         }
 
+        BossController boss = other.collider.GetComponent<BossController>();
+        if(boss != null){
+            boss.Hit();
+        }
+
         Destroy(gameObject);
     }
 }

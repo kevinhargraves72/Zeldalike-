@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1103221168390114695}
   - component: {fileID: 1707263188058330946}
-  - component: {fileID: 145370124183611689}
   - component: {fileID: 581006807490075547}
   - component: {fileID: 6163324513806667524}
+  - component: {fileID: 703700262648955170}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -85,27 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &145370124183611689
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109384465736789704}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &581006807490075547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,3 +130,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &703700262648955170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109384465736789704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09afae32de784454bbdbcb31358c83ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeTime: 3
+  timeInvincible: 2
+  bossProjectile: {fileID: 5901519240946153718, guid: 77e0feb24df236b48b6c65b334d0cb0c, type: 3}
+  hitPoints: 20

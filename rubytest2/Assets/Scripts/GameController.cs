@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 public class GameController : MonoBehaviour
 {
     public int currentLevel = 1;
-    public int[] levelEnemies = {3,5,7,10};
+    public int[] levelEnemies;
     public int killCount = 0;
     public float[] levelPoints;
     //no lives just GameOver
@@ -53,7 +53,12 @@ public class GameController : MonoBehaviour
         else if(currentLevel == 4){
             startLevelText.text = "Level 4";
         }
-        Invoke("SpawnEnemies", 2.0f);     
+        if(currentLevel != 5){
+            Invoke("SpawnEnemies", 2.0f);     
+        }else{
+            startLevelText.text = "Final Boss";
+            Invoke("StartBoss", 2.0f);     
+        }
     }
 
     // Update is called once per frame
@@ -77,7 +82,14 @@ public class GameController : MonoBehaviour
             killCount = 0;            
             oldHealth = rController.currentHealth;
             SceneManager.LoadScene("FinalLevel");
-        }        
+        }
+        else if(currentLevel == 4)
+        {
+            killCount = 0;
+            oldHealth = rController.currentHealth;
+            SceneManager.LoadScene("BossLevel");
+        }
+
         currentLevel++;        
     }    
 
@@ -91,6 +103,10 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void bossDied(){
+        SceneManager.LoadScene("GameWon");
+    }
+
     public void playerDied(){
         //playerLives--;
         
@@ -100,8 +116,17 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
+    void StartBoss(){
+        BossController boss = GameObject.Find("Boss").GetComponent<BossController>();
+        boss.startBulletSpawner();
+        startLevelText.enabled = false;
+    }
+
     void SpawnEnemies(){
         int eAmount = levelEnemies[this.currentLevel - 1];
+        //int eAmount = 2;
+        Debug.Log("Spawning Enemy amount: " + eAmount);
+
         Tilemap tObject = GameObject.FindObjectsOfType<Tilemap>()[0];
         TilemapController tController = tObject.GetComponent<TilemapController>();
         //Debug.Log("Bounds222: " + tController.minX + " , " + tController.maxX);
