@@ -7,8 +7,8 @@ public class RubyController : MonoBehaviour
     // Start is called before the first frame update
     public int maxHealth = 5;
     public float timeInvincible = 2.0f;
-    public int health { get { return currentHealth; } }
-    int currentHealth;
+    //public int health { get { return currentHealth; } }
+    public int currentHealth;
 
     bool isInvincible;
     float invincibleTimer;
@@ -26,6 +26,8 @@ public class RubyController : MonoBehaviour
     Vector2 lookDirection = new Vector2(1, 0);
 
     public GameObject projectilePrefab;
+    private GameController gameController;
+
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -33,6 +35,8 @@ public class RubyController : MonoBehaviour
         currentHealth = maxHealth;
 
         animator = GetComponent<Animator>();
+        GameObject gObject = GameObject.FindGameObjectWithTag("GameController");
+        gameController = gObject.GetComponent<GameController>();           
 
     }
 
@@ -84,10 +88,9 @@ public class RubyController : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
+        Debug.Log("Changing Health " + amount);
         if (amount < 0)
         {
-            
-            
             if (isInvincible)
                 return;
             animator.SetTrigger("Hit");
@@ -97,7 +100,13 @@ public class RubyController : MonoBehaviour
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+        UIHealthBar uBar = GameObject.Find("Health").GetComponent<UIHealthBar>();
+        uBar.SetValue(currentHealth / (float)maxHealth);
+
+        if(currentHealth <= 0){
+            gameController.playerDied();
+        }
+
     }
 
 /*

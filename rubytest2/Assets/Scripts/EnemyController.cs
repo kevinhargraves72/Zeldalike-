@@ -11,8 +11,8 @@ public class EnemyController : MonoBehaviour
     public bool vertical;
     public float changeTime = 3.0f;
     public int hitPoints = 3;
-    public GameController gameController;
-    public TilemapController tController;
+    private GameController gameController;
+    private TilemapController tController;
 
     Rigidbody2D rigidbody2D;
     float timer;
@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
         tController = tObject.GetComponent<TilemapController>();
         GameObject gObject = GameObject.FindGameObjectWithTag("GameController");
         gameController = gObject.GetComponent<GameController>();        
-        Debug.Log("Bounds:  " + tController.minX + " , " + tController.maxX);
+        //Debug.Log("Bounds:  " + tController.minX + " , " + tController.maxX);
     }
 
     void Update()
